@@ -1,0 +1,14 @@
+---
+user_data:
+
+  user1:
+    password: []
+    privileged: []
+
+  user2:
+    password: []
+    privileged: []
+
+  user3:
+    password: []
+    privileged: []

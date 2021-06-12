@@ -1,0 +1,15 @@
+- name: Read encrypted user-data
+  include_vars: user_data.yml
+
+- name: Create new users
+  cisco.ios.ios_user:
+    name: "{{ user.key }}"
+    configured_password: "{{ user.value.password }}"
+    password_type: secret
+    privilege: "{{ user.value.privileged }}"
+    update_password: on_create
+    state: present
+  with_dict: "{{user_data}}"
+  loop_control:
+    loop_var: user
+    label: '{{user.key, user.value.privileged}}'
